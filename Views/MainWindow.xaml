@@ -1,0 +1,79 @@
+﻿<Window x:Class="LibaryApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibaryApp"
+        mc:Ignorable="d"
+        Title="Libary app" Height="550" Width="800" FontSize="14" FontFamily="MV Boli">
+        <!--<Window.Resources>
+            <Style x:Key="BlackAndWhite">
+            <Setter Property="Control.Background" Value="#17212b" />
+                <Setter Property="Control.Foreground" Value="White" />
+            </Style>
+        </Window.Resources>-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBox Name="UserName" ToolTip="Введите имя пользователя" TextChanged="UserName_TextChanged"/>
+
+        <ListView  Name="UsersListView" Grid.Column="0" Grid.Row="1" SelectionChanged="UserBooksListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Path=Famaly}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <DockPanel Grid.Column="1" Grid.RowSpan="3">
+            <Label Content="User's books:" DockPanel.Dock="Top"/>
+            <DockPanel DockPanel.Dock="Bottom">
+                <Button Content="Add book" MaxWidth="100px" HorizontalAlignment="Left" DockPanel.Dock="Left" Click="Button_Click"/>
+                <Button  Content="Return book" HorizontalAlignment="Left" DockPanel.Dock="Left" Click="Button_Click_1" Margin="10,0,0,0"/>
+            </DockPanel>
+            <Label Content="Select book from all books list and click" DockPanel.Dock="Bottom"/>
+            <ListView Name="UserBooksListView" DockPanel.Dock="Top">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Art" DisplayMemberBinding="{Binding Path=Art}"/>
+                        <GridViewColumn Header="Author" DisplayMemberBinding="{Binding Path=Author}"/>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+
+
+
+        <Expander Header="List all books" Grid.Column="0" 
+                  Grid.ColumnSpan="1" Grid.Row="2" MaxHeight="300">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBox Name="BookName" ToolTip="Введите кингу" TextChanged="BookName_TextChanged" Grid.Row="0"/>
+                <ListView Name="BooksListView" SelectionChanged="BooksListView_SelectionChanged" Grid.Row="1">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Art" DisplayMemberBinding="{Binding Path=Art}"/>
+                            <GridViewColumn Header="Author" DisplayMemberBinding="{Binding Path=Author}"/>
+                            <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}"/>
+                            <GridViewColumn Header="Free count" DisplayMemberBinding="{Binding Path=Count}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Expander>
+    </Grid>
+</Window>
