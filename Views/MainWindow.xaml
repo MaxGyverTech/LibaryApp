@@ -5,13 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibaryApp"
         mc:Ignorable="d"
-        Title="Libary app" Height="550" Width="800" FontSize="14" FontFamily="MV Boli">
-        <!--<Window.Resources>
-            <Style x:Key="BlackAndWhite">
-            <Setter Property="Control.Background" Value="#17212b" />
-                <Setter Property="Control.Foreground" Value="White" />
-            </Style>
-        </Window.Resources>-->
+        Title="Libary app" Height="550" Width="800" FontSize="14" FontFamily="MV Boli" 
+        Background="#c0c6cc"
+        MinWidth="400px"
+        MinHeight="300px">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -41,7 +38,7 @@
                 <Button Content="Add book" MaxWidth="100px" HorizontalAlignment="Left" DockPanel.Dock="Left" Click="Button_Click"/>
                 <Button  Content="Return book" HorizontalAlignment="Left" DockPanel.Dock="Left" Click="Button_Click_1" Margin="10,0,0,0"/>
             </DockPanel>
-            <Label Content="Select book from all books list and click" DockPanel.Dock="Bottom"/>
+            <Label Content="Select book and user, then click add" DockPanel.Dock="Bottom"/>
             <ListView Name="UserBooksListView" DockPanel.Dock="Top">
                 <ListView.View>
                     <GridView>
@@ -63,7 +60,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBox Name="BookName" ToolTip="Введите кингу" TextChanged="BookName_TextChanged" Grid.Row="0"/>
-                <ListView Name="BooksListView" SelectionChanged="BooksListView_SelectionChanged" Grid.Row="1">
+                <ListView Name="BooksListView" Grid.Row="1">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Art" DisplayMemberBinding="{Binding Path=Art}"/>

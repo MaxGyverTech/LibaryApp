@@ -13,11 +13,22 @@ namespace LibaryApp.ViewModels
         public List<User> UpdateUsers(string search = "")
         {
             if (search == "") return Data.Users;
+            search = search.ToLower();
             var users = new List<User>();
             foreach (User user in Data.Users)
-                if (user.Name.Contains(search) | user.Famaly.Contains(search))
+                if (user.Name.ToLower().Contains(search) | user.Famaly.ToLower().Contains(search))
                     users.Add(user);
             return users;
+        }
+        public List<Book> UpdateBooks(string search = "")
+        {
+            if (search == "") return Data.Books;
+            search = search.ToLower();
+            var books = new List<Book>();
+            foreach (var book in Data.Books)
+                if (book.Name.ToLower().Contains(search) | book.Author.ToLower().Contains(search))
+                    books.Add(book);
+            return books;
         }
         public List<Book> UpdateUserBooks(User user)
         {
@@ -29,15 +40,6 @@ namespace LibaryApp.ViewModels
                 foreach (Book book in Data.Books)
                     if (book.Art == i)
                         books.Add(book);
-            return books;
-        }
-        public List<Book> UpdateBooks(string search = "")
-        {
-            if (search == "") return Data.Books;
-            var books = new List<Book>();
-            foreach (var book in Data.Books)
-                if (book.Name.Contains(search) | book.Author.Contains(search))
-                    books.Add(book);
             return books;
         }
         public List<Book> AddBook(Book book, User user)
