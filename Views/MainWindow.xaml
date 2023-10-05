@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
 
-        <TextBox Name="UserName" ToolTip="Введите имя пользователя" TextChanged="UserName_TextChanged"/>
+        <TextBox Name="UserName" Tag="Search..." TextChanged="UserName_TextChanged" ToolTip="Search..."/>
 
         <ListView  Name="UsersListView" Grid.Column="0" Grid.Row="1" SelectionChanged="UserBooksListView_SelectionChanged">
             <ListView.View>
