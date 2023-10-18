@@ -22,39 +22,41 @@ namespace LibaryApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        ViewModels.MainWindow View = new();
+        //ViewModels.MainWindow View = new();
         public MainWindow()
         {
             InitializeComponent();
-            BooksListView.ItemsSource = View.UpdateBooks();
-            UsersListView.ItemsSource = View.UpdateUsers();
+            DataContext = new ApplicationViewModel();
+            //BooksListView.ItemsSource = View.UpdateBooks();
+            //UsersListView.ItemsSource = View.UpdateUsers();
         }
 
         private void UserBooksListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UserBooksListView.ItemsSource =  View.UpdateUserBooks(UsersListView.SelectedItem as User);
-            BooksListView.Items.Refresh();
+            //UserBooksListView.ItemsSource =  View.UpdateUserBooks(UsersListView.SelectedItem as User);
+            //BooksListView.Items.Refresh();
         }
 
-        private void UserName_TextChanged(object sender, TextChangedEventArgs e) =>
-            UsersListView.ItemsSource = View.UpdateUsers(UserName.Text);
+        private void UserName_TextChanged(object sender, TextChangedEventArgs e) { }
+            //UsersListView.ItemsSource = View.UpdateUsers(UserName.Text);
 
-        private void BookName_TextChanged(object sender, TextChangedEventArgs e) =>
-            BooksListView.ItemsSource = View.UpdateBooks(BookName.Text);
+        private void BookName_TextChanged(object sender, TextChangedEventArgs e) { }
+            //BooksListView.ItemsSource = View.UpdateBooks(BookName.Text);
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var res = View.AddBook(BooksListView.SelectedItem as Book, UsersListView.SelectedItem as User);
-            if (res != null) UserBooksListView.ItemsSource = res;
-            BooksListView.Items.Refresh();
+            //var res = View.AddBook(BooksListView.SelectedItem as Book, UsersListView.SelectedItem as User);
+            //if (res != null) UserBooksListView.ItemsSource = res;
+            //BooksListView.Items.Refresh();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var res = View.ReturnBook(UserBooksListView.SelectedItem as Book, UsersListView.SelectedItem as User);
-            if (res != null) UserBooksListView.ItemsSource = res;
-            BooksListView.Items.Refresh();
+            //var res = View.ReturnBook(UserBooksListView.SelectedItem as Book, UsersListView.SelectedItem as User);
+            //if (res != null) UserBooksListView.ItemsSource = res;
+            //BooksListView.Items.Refresh();
 
         }
+
     }
 }

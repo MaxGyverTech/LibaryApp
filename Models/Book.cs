@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace LibaryApp.Models
 {
-    internal class Book
+    internal class Book : NotifyProperty
     {
-        public short Art {  get; set; }
-        public string Author { get; set; }
-        public string Name { get; set; }
-        public DateTime Age { get; set; }
-        public int Count { get; set; }
+        short art;
+        string author;
+        string name;
+        DateTime age;
+        int count;
 
         public Book(short art, string author, string name, DateTime age, int count)
         {
@@ -21,6 +21,50 @@ namespace LibaryApp.Models
             Name = name;
             Age = age;
             Count = count;
+        }
+
+        public short Art
+        {
+            get { return art; }
+            set { 
+                art = value;
+                OnPropertyChanged(nameof(Art));
+            }
+        }
+        public string Author
+        {
+            get => author;
+            set
+            {
+                author = value;
+                OnPropertyChanged(nameof(Author));
+            }
+        }
+        public string Name
+        {
+            get => name;
+            set
+            {
+                name = value;
+                OnPropertyChanged(nameof(Name));
+            }
+        }
+        public DateTime Age
+        {
+            get => age; 
+            set
+            {
+                age = value;
+                OnPropertyChanged(nameof(Age));
+            }
+        }
+        public int Count
+        {
+            get => count;
+            set { 
+                count = value;
+                OnPropertyChanged(nameof(Count));
+            }
         }
     }
 }
